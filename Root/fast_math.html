@@ -1,0 +1,51 @@
+<!--
+    Author: Rohan Keenoy
+    For my grandmother who suffered a stroke, to help regain some of her mathematics abilities
+-->
+
+<!doctype html>
+<html lang = eng> </html>
+<head>
+    <script src="makeItWork.js"></script>
+    <link rel="stylesheet" href="fastmath_style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content = "width=device-width, initial scale = 1";>
+    <title> Fast Math </title>
+    
+</head>
+<body>
+    <!--Equations load when web page is loaded up. -->
+    <script>
+        window.onload = function(){
+            equations();
+        };
+    </script>
+    <h1> Welcome to Fast Math! </h1>
+    <p> A website for solving simple math problems. </p>
+    <!-- Math Stuff-->
+    <div id="showMath">
+
+    </div>
+    <!-- ANSWERS GO HERE -->
+    <form>
+        <input type="input" id="userInput"/>
+        <input type="button" id ="submit" value="Enter"onclick="confirmIfRight()" onclick=
+        "document.getElementById('userInput').value = '' "/> 
+    </form>
+
+    <!-- Score tally-->
+    <table>
+         <tr>
+            <td><b>Correct</b></td>
+            <td><b>Incorrect</b></td>
+        </tr>
+        <tr>
+            <td id="correctCount"> 0 </td>
+            <td id="incorrectCount"> 0 </td>
+        </tr>
+    </table>
+    
+
+</body>
+<footer> <p> Author: Rohan Keenoy</p>
+</footer>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang=eng>
+
+</html>
+
+<head>
+    <script src="makeItWork.js"></script>
+    <link rel="stylesheet" href="fastmath_style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial scale = 1" ;>
+    <title> Fast Math </title>
+
+</head>
+
+<body>
+    <h1> Welcome to Fast Math! </h1>
+    <p> A website for solving simple math problems. </p>
+    <!-- Math Stuff-->
+    <div id="showMath">
+
+    </div>
+    <!-- ANSWERS GO HERE -->
+    <form>
+        <input type="input" id="userInput" />
+        <input type="button" id="submit" value="Enter" onclick="confirmIfRight()"
+            onclick="document.getElementById('userInput').value = '' " />
+    </form>
+
+
+
+    <!-- Score tally-->
+    <table>
+        <tr>
+            <td><b>Correct</b></td>
+            <td><b>Incorrect</b></td>
+        </tr>
+        <tr>
+            <td id="correctCount"> 0 </td>
+            <td id="incorrectCount"> 0 </td>
+        </tr>
+    </table>
+
+    <script>
+        window.onload = equations;
+        var sum;
+
+        function equations() {
+            var a, b, sum;
+            //assign random values to a,b
+            a = Math.floor(Math.random() * 10) + 1;
+            b = Math.floor(Math.random() * 10) + 1;
+            //array that holds values, MUST BE MUTUABLE
+            solve = [a + b, a - b, a / b, a * b];
+            signs = ['+', '-', '÷', 'x'];
+            //show in html
+            let randoArr = Math.floor(Math.random() * solve.length);
+            showSign = signs[randoArr];
+            document.getElementById('showMath').innerHTML = a + showSign + b;
+            //assign random opperation
+            sum = solve[randoArr];
+
+            //This will be used to reassign the value to global variable
+            window.sum = sum;
+            console.log(sum);
+        };
+
+        // Function checks if user Input is correct and then adds tallies to the table.
+        // The tables values are held in correct and incorrect and incremented based on the conditional statement.
+        function confirmIfRight() {
+            var userInput = document.getElementById('userInput').value;
+            const correctEl = document.getElementById('correctCount');
+            const incorrectEl = document.getElementById('incorrectCount');
+            var correct = 0;
+            var incorrect = 0;
+            if (userInput == sum) {
+                correct++;
+                correctEl.textContent = correct;
+                equations();
+            } else if (userInput = '') {
+                incorrect++;
+                incorrect.textContent = incorrect;
+                equations();
+            } else {
+                incorrect++;
+                incorrectEl.textContent = incorrect;
+                equations();
+            }
+            clearTextBox();
+        }
+        //This function is used to clear the textbox
+        function clearTextBox() {
+            document.getElementById('userInput').value = ""
+        }
+    </script>
+</body>
